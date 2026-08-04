@@ -61,7 +61,7 @@ export default function RootLayout({
     >
       <body className="relative flex min-h-full flex-col">
         <Theme>
-          <MainComponent>{children}</MainComponent>
+          {children}
           <Toaster />
         </Theme>
       </body>
