@@ -1,7 +1,7 @@
 import React from 'react'
 import { algorithms } from '../../../utils/algorithms'
 import AlgoCard from '../ui/AlgoCard'
-import AlgoContent from '../AlgoContent/AlgoContent'
+import CardContent from '../CardContent/CardContent'
 
 export default function Algorithms() {
 
@@ -14,7 +14,7 @@ export default function Algorithms() {
       <div className="grid grid-cols-2 gap-3">
         { algorithms.map((algorithm, index)=>{
           return (
-            <AlgoContent key={algorithm.id} title={algorithm.title} content={algorithm.shortDescription} timeComplexity={algorithm.complexity} bestForContent={algorithm.bestFor}/>
+            <CardContent key={algorithm.id} title={algorithm.title} content={algorithm.shortDescription} timeComplexity={algorithm.complexity} bestForContent={algorithm.bestFor}/>
           )
         }) }
       </div>
