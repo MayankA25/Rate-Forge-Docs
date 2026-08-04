@@ -23,7 +23,7 @@ export default function CardContent({
   return (
     <AlgoCard>
       <div className="flex flex-col justify-center gap-3">
-        <div className="flex flex-col justify-center">
+        <div className="flex items-center gap-3">
           <HyperLink text={title} link="" />
           {(persistent || distributed ) && <div className="flex items-center gap-3 mb-2 mt-1.5">
             { persistent && <Badge text="Persistent" /> }

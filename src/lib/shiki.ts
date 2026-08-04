@@ -1,4 +1,4 @@
-import { codeToHtml, createHighlighter } from "shiki";
+import { createHighlighter } from "shiki";
 
 
 

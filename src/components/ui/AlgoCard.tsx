@@ -1,13 +1,16 @@
 import React from "react";
-import Badge from "./Badge";
 
 export default function AlgoCard({
- children
+ children,
+ border,
+ hover
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  border?: boolean,
+  hover?: boolean
 }) {
   return (
-    <div className="justfiy-center flex flex-col rounded-lg bg-neutral-900 p-5">
+    <div className={`justfiy-center flex flex-col rounded-lg bg-neutral-900 p-5 ${border && "border border-neutral-700"} ${hover && "hover:scale-101 transition-all duration-200 hover:cursor-default"}`}>
      {children}
     </div>
   );

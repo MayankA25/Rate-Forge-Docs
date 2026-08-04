@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "../ui/Button";
-import { ArrowRight, ChevronRight } from "lucide-react";
 
 export default function Header() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../ui/Button";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 export default function Introduction() {
