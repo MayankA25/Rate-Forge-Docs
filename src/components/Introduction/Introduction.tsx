@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 export default function Introduction() {
   return (
     <div className="flex w-full flex-col py-15">
-      <div className="m-auto flex w-[70%] flex-col justify-center gap-8">
+      <div className="m-auto flex flex-col justify-center gap-8">
         <div className="flex items-center justify-center">
           <h1 className="text-7xl font-extrabold">Rate Forge</h1>
         </div>

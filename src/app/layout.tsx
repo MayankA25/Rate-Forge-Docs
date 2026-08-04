@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Theme from "./Providers/Theme";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rate Forge Docs | Production-Ready Rate Limiter for Node.js",
-  description: "Official documentation for Rate Forge, a production-ready TypeScript rate limiting library for Node.js. Learn how to use multiple rate limiting algorithms, pluggable storage backends, and framework integrations.",
-   applicationName: "Rate Forge",
+  description:
+    "Official documentation for Rate Forge, a production-ready TypeScript rate limiting library for Node.js. Learn how to use multiple rate limiting algorithms, pluggable storage backends, and framework integrations.",
+  applicationName: "Rate Forge",
   keywords: [
     "rate limiter",
     "Node.js",
@@ -29,9 +31,8 @@ export const metadata: Metadata = {
     "MongoDB",
     "API security",
     "Rate Forge",
-  ]
+  ],
 };
-
 
 export const viewport: Viewport = {
   themeColor: [
@@ -57,8 +58,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col relative">
-        <Theme>{children}</Theme>
+      <body className="relative flex min-h-full flex-col">
+        <Theme>
+          {children}
+          <Toaster/>
+        </Theme>
       </body>
     </html>
   );
