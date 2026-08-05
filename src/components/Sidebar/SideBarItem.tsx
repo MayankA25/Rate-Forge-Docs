@@ -2,6 +2,8 @@
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import React, { useState } from 'react'
 import Sidebar from './Sidebar';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface SidebarItem{
     title: string;
@@ -9,7 +11,7 @@ interface SidebarItem{
     items?: SidebarItem[]
 }
 
-export default function SideBarItem({ item }: { item: SidebarItem }) {
+export default function SideBarItem({ item, isChildren }: { item: SidebarItem, isChildren?: boolean }) {
 
     const [ block, setBlock ] = useState(false);
 
@@ -22,13 +24,19 @@ export default function SideBarItem({ item }: { item: SidebarItem }) {
         }
     }
 
+    const pathname = usePathname();
+
+    const extractedTitle = pathname.split("/")[pathname.split("/").length-1];
+
+    console.log(extractedTitle);
+
   return (
     <li className='my-3'>
-        <span onClick={item.items && handleClick} className="flex items-center hover:bg-neutral-900 px-3 py-2.5 rounded-lg cursor-pointer w-100">
+        <Link href={!isChildren ? `/docs/${item.title.toLowerCase()}` :""} onClick={item.items && handleClick} className={`flex items-center ${extractedTitle == item.title.toLowerCase() ? "bg-neutral-900" : ""} hover:bg-neutral-900 px-3 py-2.5 rounded-lg cursor-pointer w-90`}>
             {item.items && ( block ? <span><ChevronDown/></span> : <span><ChevronRight/></span> )}
             <span className='font-semibold text-md'>{ item.title }</span>
-        </span>
-        { item.items && <Sidebar items={item.items} displayBlock={block} /> }
+        </Link>
+        { item.items && <Sidebar items={item.items} displayBlock={block} isChildren={true} /> }
     </li>
   )
 }

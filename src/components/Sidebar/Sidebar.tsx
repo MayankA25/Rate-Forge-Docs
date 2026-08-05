@@ -7,12 +7,12 @@ interface Items{
     items?: Items[]
 }
 
-export default function Sidebar({ items, displayBlock }: { items: Items[], displayBlock?: boolean }) {
+export default function Sidebar({ items, displayBlock, isChildren }: { items: Items[]; displayBlock?: boolean; isChildren: boolean}) {
   return (
     <div className="h-full px-5">
       <ul className={`${displayBlock ? "block" : "hidden"} px-3 transition-all duration-200`}>
         {items.map((sidebarItem, index) => {
-          return <SideBarItem key={index} item={sidebarItem} />;
+          return <SideBarItem key={index} item={sidebarItem} isChildren={isChildren} />;
         })}
       </ul>
     </div>
