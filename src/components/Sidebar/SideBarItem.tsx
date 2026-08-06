@@ -1,42 +1,65 @@
 "use client";
-import { ChevronDown, ChevronRight } from 'lucide-react';
-import React, { useState } from 'react'
-import Sidebar from './Sidebar';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { ChevronDown, ChevronRight } from "lucide-react";
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-interface SidebarItem{
-    title: string;
-    slug: string;
-    items?: SidebarItem[]
+interface SidebarItem {
+  title: string;
+  slug: string;
+  items?: SidebarItem[];
 }
 
-export default function SideBarItem({ item, isChildren }: { item: SidebarItem, isChildren?: boolean }) {
+export default function SideBarItem({
+  item,
+  isChildren,
+}: {
+  item: SidebarItem;
+  isChildren?: boolean;
+}) {
+  const [block, setBlock] = useState(false);
 
-    const [ block, setBlock ] = useState(false);
+  const handleClick = () => {
+    setBlock(true);
+  };
 
-    const handleClick = ()=>{
-        if(!block){
-            setBlock(true);
-        }
-        else{
-            setBlock(false);
-        }
-    }
+  const pathname = usePathname();
 
-    const pathname = usePathname();
+  const extractedTitle = pathname.split("/")[pathname.split("/").length - 1];
 
-    const extractedTitle = pathname.split("/")[pathname.split("/").length-1];
-
-    console.log(extractedTitle);
+  console.log(extractedTitle);
 
   return (
-    <li className='my-3'>
-        <Link href={!isChildren ? `/docs/${item.title.toLowerCase()}` :""} onClick={item.items && handleClick} className={`flex items-center ${extractedTitle == item.title.toLowerCase() ? "bg-neutral-900" : ""} hover:bg-neutral-900 px-3 py-2.5 rounded-lg cursor-pointer w-90`}>
-            {item.items && ( block ? <span><ChevronDown/></span> : <span><ChevronRight/></span> )}
-            <span className='font-semibold text-md'>{ item.title }</span>
+    <li className={`my-3`}>
+      <div
+        className={`flex cursor-pointer items-center justify-center rounded-lg px-2 hover:bg-neutral-900 ${extractedTitle.toLowerCase() == item.title.toLowerCase() ? "bg-neutral-900" : ""}`}
+      >
+        <Link
+          href={!isChildren ? `/docs/${item.title.toLowerCase()}` : ""}
+          onClick={item.items && handleClick}
+          className={`flex w-90 items-center px-3 py-2.5`}
+        >
+          <span className="text-md font-semibold">{item.title}</span>
         </Link>
-        { item.items && <Sidebar items={item.items} displayBlock={block} isChildren={true} /> }
+        {item.items &&
+          (block ? (
+            <span className="hover:bg-neutral-800 rounded-full p-1 transition-all duration-200" onClick={()=>{
+                setBlock(false)
+            }}>
+              <ChevronDown />
+            </span>
+          ) : (
+            <span className="hover:bg-neutral-800 rounded-full p-1 transition-all duration-200" onClick={()=>{
+                setBlock(true);
+            }}>
+              <ChevronRight />
+            </span>
+          ))}
+      </div>
+      {item.items && (
+        <Sidebar items={item.items} displayBlock={block} isChildren={true} />
+      )}
     </li>
-  )
+  );
 }
