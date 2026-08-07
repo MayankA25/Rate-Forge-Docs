@@ -1,6 +1,7 @@
 import React from "react";
 import DocContent from "../ui/DocContent";
 import List from "../ui/List";
+import CodeBlock from "../CodeBlock/CodeBlock";
 
 export default function DocIntroduction() {
   const rateForgeReasons = [
@@ -19,14 +20,37 @@ export default function DocIntroduction() {
     "Sliding Window Counter",
     "Token Bucket",
     "Leaky Bucket",
-    "GCRA"
-  ]
+    "GCRA",
+  ];
 
   const supportedStores = [
     "Memory Store",
     "Redis Store",
     "MongoDB Store",
-    "PostgreSQL Store"
+    "PostgreSQL Store",
+  ];
+
+  const tabs = [
+    {
+    title: "npm",
+    language: "bash",
+    code: "npm install rate-forge",
+  },
+  {
+    title: "pnpm",
+    language: "bash",
+    code: "pnpm add rate-forge",
+  },
+  {
+    title: "yarn",
+    language: "bash",
+    code: "yarn add rate-forge",
+  },
+  {
+    title: "bun",
+    language: "bash",
+    code: "bun add rate-forge",
+  },
   ]
   return (
     <div className="flex flex-col">
@@ -79,19 +103,28 @@ export default function DocIntroduction() {
 
             <div className="my-5">
               <DocContent title="Supported Algorithms">
-                <List listArray={supportedAlgos}/>
+                <List listArray={supportedAlgos} />
               </DocContent>
             </div>
             <div className="my-5">
               <DocContent title="Supported Stores">
-                <List listArray={supportedStores}/>
+                <List listArray={supportedStores} />
               </DocContent>
             </div>
           </div>
         </div>
       </DocContent>
-      <DocContent title="Installation" includeHashTag={true} titleClassName="text-5xl mt-5">
-        <p>Install</p>
+      <DocContent
+        title="Installation"
+        includeHashTag={true}
+        titleClassName="text-5xl mt-5"
+      >
+        <div className="flex flex-col justify-center px-8 gap-5">
+          <p className="font-bold">
+            Install Rate Forge using your preferred package manager.
+          </p>
+          <CodeBlock fileName="Terminal" code="npm install rate-forge" language="bash" tabs={tabs} ></CodeBlock>
+        </div>
       </DocContent>
     </div>
   );
