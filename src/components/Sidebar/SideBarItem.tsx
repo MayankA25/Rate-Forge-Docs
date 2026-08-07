@@ -33,12 +33,12 @@ export default function SideBarItem({
   return (
     <li className={`my-3`}>
       <div
-        className={`flex cursor-pointer items-center justify-center rounded-lg px-2 hover:bg-neutral-900 ${extractedTitle.toLowerCase() == item.title.toLowerCase() ? "bg-neutral-900" : ""}`}
+        className={`flex cursor-pointer items-center justify-center rounded-lg hover:bg-neutral-900 ${extractedTitle.toLowerCase() == item.title.toLowerCase() ? "bg-neutral-900" : ""}`}
       >
         <Link
           href={!isChildren ? `/docs/${item.title.toLowerCase()}` : ""}
           onClick={item.items && handleClick}
-          className={`flex w-90 items-center px-3 py-2.5`}
+          className={`flex w-70 items-center px-3 py-2.5`}
         >
           <span className="text-md font-semibold">{item.title}</span>
         </Link>
