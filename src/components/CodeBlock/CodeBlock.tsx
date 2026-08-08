@@ -1,7 +1,7 @@
 import { highlightCode } from "@/lib/shiki";
 import React from "react";
-import CopyIcon from "../ui/CopyIcon";
-import CodeTabs from "../ui/CodeTabs";
+import CodeTabs from "../CodeTabs/CodeTabs";
+import CodeHeader from "../ui/CodeHeader";
 
 interface Tab {
   title: string;
@@ -17,27 +17,32 @@ export default async function CodeBlock({
 }: {
   code: string;
   language: string;
-  fileName: string;
-  tabs?: Tab[];
+  fileName?: string;
+  tabs: Tab[];
 }) {
-  const html = await highlightCode(code, language);
+
+  const highlightedTabs = await Promise.all(
+    tabs.map(async(tab)=>{
+      return ({
+        ...tab,
+        html: await highlightCode(tab.code, tab.language)
+      })
+    })
+  )
+
+  const html = tabs.length > 0 ? null : await highlightCode(code, language);
 
   // console.log("Html: ", html)
 
   return (
     <div className="relative w-full overflow-hidden rounded-lg">
-      {tabs && <CodeTabs tabs={tabs} />}
-      {fileName && (
-        <div className="relative flex items-center border-b border-neutral-700 bg-neutral-900 px-4 py-2">
-          <span className="font-bold text-neutral-200">{fileName}</span>
-          <span className="absolute right-4">
-        <CopyIcon text={code} />
-      </span>
-        </div>
+      {tabs.length > 0 && <CodeTabs tabs={highlightedTabs} headerText={fileName || "Terminal"} />}
+      {fileName && tabs.length == 0 && (
+        <CodeHeader headerText={fileName} code={code} />
       )}
       <div
         className="[&_.shiki]:p-7"
-        dangerouslySetInnerHTML={{ __html: html }}
+        dangerouslySetInnerHTML={{ __html: html! }}
       ></div>
       
     </div>

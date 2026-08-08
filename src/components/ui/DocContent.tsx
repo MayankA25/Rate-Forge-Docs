@@ -6,7 +6,7 @@ export default function DocContent({
   titleClassName,
   children,
 }: {
-  title: string;
+  title: string | React.ReactNode;
   includeHashTag?: boolean;
   titleClassName?: string;
   children: React.ReactNode;

@@ -18,7 +18,7 @@ export default function DocsHeader() {
   }).join(" ");
 
   return (
-    <div className='py-6 px-5 bg-neutral-900 sticky top-0 w-full'>
+    <div className='py-6 px-5 bg-neutral-900 sticky top-0 w-full z-50'>
       <h1 className='font-bold text-xl'>{ headerText }</h1>
     </div>
   )
