@@ -4,6 +4,7 @@ import List from "../ui/List";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import Badge from "../ui/Badge";
 import Mermaid from "../Mermaid/Mermaid";
+import Table from "../ui/Table";
 
 export default function DocIntroduction() {
   const rateForgeReasons = [
@@ -54,6 +55,19 @@ export default function DocIntroduction() {
       code: "bun add rate-forge",
     },
   ];
+
+  const requirementsTable = {
+    tableHeaders: ["Requirement", "Support"],
+    tableBody: [
+      [ "Node.js", "Required" ],
+      [ "TyepScript", "Fully Supported" ],
+      [ "JavaScript", "Fully Supported" ],
+      [ "npm", "Supported" ],
+      [ "pnpm", "Supported" ],
+      [ "yarn", "Supported" ],
+      [ "bun", "Supported" ],
+    ]
+  }
 
   const quickStartCodes = [
     {
@@ -224,51 +238,7 @@ app.listen(5000);`,
           </DocContent>
 
           <DocContent title="Requirements" includeHashTag={false}>
-            <table className="w-full border-collapse text-left">
-              <thead>
-                <tr className="border-b border-neutral-700">
-                  <th className="px-4 py-3 font-semibold">Requirement</th>
-                  <th className="px-4 py-3 font-semibold">Support</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr className="border-b border-neutral-800">
-                  <td className="px-4 py-3">Node.js</td>
-                  <td className="px-4 py-3">Required</td>
-                </tr>
-
-                <tr className="border-b border-neutral-800">
-                  <td className="px-4 py-3">TypeScript</td>
-                  <td className="px-4 py-3">Fully Supported</td>
-                </tr>
-
-                <tr className="border-b border-neutral-800">
-                  <td className="px-4 py-3">JavaScript</td>
-                  <td className="px-4 py-3">Fully Supported</td>
-                </tr>
-
-                <tr className="border-b border-neutral-800">
-                  <td className="px-4 py-3">npm</td>
-                  <td className="px-4 py-3">Supported</td>
-                </tr>
-
-                <tr className="border-b border-neutral-800">
-                  <td className="px-4 py-3">pnpm</td>
-                  <td className="px-4 py-3">Supported</td>
-                </tr>
-
-                <tr className="border-b border-neutral-800">
-                  <td className="px-4 py-3">Yarn</td>
-                  <td className="px-4 py-3">Supported</td>
-                </tr>
-
-                <tr>
-                  <td className="px-4 py-3">Bun</td>
-                  <td className="px-4 py-3">Supported</td>
-                </tr>
-              </tbody>
-            </table>
+            <Table tableHeaders={requirementsTable.tableHeaders} tableBody={requirementsTable.tableBody} />
           </DocContent>
         </div>
       </DocContent>
