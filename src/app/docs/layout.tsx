@@ -8,7 +8,7 @@ export default async function DocLayout({ children }: { children: React.ReactNod
   return (
     <div className="w-full">
       <div className="flex w-[95%] m-auto">
-        <div className="flex w-[20%] items-center border-r border-neutral-800 py-10 min-h-screen">
+        <div className="flex h-screen scrollbar-thin w-[20%] items-center border-r border-neutral-800 py-5 min-h-screen overflow-y-scroll">
           <Sidebar items={docsSidebar} displayBlock={true} isChildren={false} />
         </div>
 
