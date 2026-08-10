@@ -15,19 +15,19 @@ export const algorithms = [
 
     workingFlowChart: `
 flowchart TD
-    A[Incoming Request] --> B[Identify Client]
-    B --> C[Get Current Window]
-    C --> D[Get Request Count]
+    A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Identify Client&emsp;&emsp;]
+    B --> C[&emsp;&emsp;Get Current Window&emsp;&emsp;]
+    C --> D[&emsp;&emsp;Get Request Count&emsp;&emsp;]
 
-    D --> E{Count < Limit?}
+    D --> E{&emsp;&emsp;Count < Limit?&emsp;&emsp;}
 
-    E -->|Yes| F[Allow Request]
-    F --> G[Increment Counter]
+    E -->|&emsp;&emsp;Yes&emsp;&emsp;| F[&emsp;&emsp;Allow Request&emsp;&emsp;]
+    F --> G[&emsp;&emsp;Increment Counter&emsp;&emsp;]
 
-    E -->|No| H[Reject Request]
+    E -->|&emsp;&emsp;No&emsp;&emsp;| H[&emsp;&emsp;Reject Request&emsp;&emsp;]
 
-    G --> I[Window Expires]
-    I --> J[Reset Counter]
+    G --> I[&emsp;&emsp;Window Expires&emsp;&emsp;]
+    I --> J[&emsp;&emsp;Reset Counter&emsp;&emsp;]
 `,
 
     workingList: [
@@ -86,20 +86,20 @@ flowchart TD
 
     workingFlowChart: `
 flowchart TD
-    A[Incoming Request] --> B[Identify Client]
+    A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Identify Client&emsp;&emsp;]
     B --> C[Get Request Timestamps]
 
     C --> D[Remove Expired Timestamps]
-    D --> E[Count Remaining Requests]
+    D --> E[&emsp;&emsp;Count Remaining Requests&emsp;&emsp;]
 
-    E --> F{Count < Limit?}
+    E --> F{&emsp;&emsp;Count < Limit?&emsp;&emsp;}
 
-    F -->|Yes| G[Allow Request]
-    G --> H[Add Current Timestamp]
+    F -->|&emsp;&emsp;Yes&emsp;&emsp;| G[&emsp;&emsp;Allow Request&emsp;&emsp;]
+    G --> H[&emsp;&emsp;Add Current Timestamp&emsp;&emsp;]
 
-    F -->|No| I[Reject Request]
+    F -->|&emsp;&emsp;No&emsp;&emsp;| I[&emsp;&emsp;Reject Request&emsp;&emsp;]
 
-    H --> J[Store Updated Timestamps]
+    H --> J[&emsp;&emsp;Store Updated Timestamps&emsp;&emsp;]
 `,
 
     workingList: [
@@ -158,21 +158,21 @@ flowchart TD
 
     workingFlowChart: `
 flowchart TD
-    A[Incoming Request] --> B[Identify Client]
-    B --> C[Get Previous Window Count]
-    C --> D[Get Current Window Count]
+    A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Identify Client&emsp;&emsp;]
+    B --> C[&emsp;&emsp;Get Previous Window Count&emsp;&emsp;]
+    C --> D[&emsp;&emsp;Get Current Window Count&emsp;&emsp;]
 
-    D --> E[Calculate Window Progress]
-    E --> F[Calculate Weighted Count]
+    D --> E[&emsp;&emsp;Calculate Window Progress&emsp;&emsp;]
+    E --> F[&emsp;&emsp;Calculate Weighted Count&emsp;&emsp;]
 
-    F --> G{Count < Limit?}
+    F --> G{&emsp;&emsp;Count < Limit?&emsp;&emsp;}
 
-    G -->|Yes| H[Allow Request]
-    H --> I[Increment Current Window]
+    G -->|&emsp;&emsp;Yes&emsp;&emsp;| H[&emsp;&emsp;Allow Request&emsp;&emsp;]
+    H --> I[&emsp;&emsp;Increment Current Window&emsp;&emsp;]
 
-    G -->|No| J[Reject Request]
+    G -->|&emsp;&emsp;No&emsp;&emsp;| J[&emsp;&emsp;Reject Request&emsp;&emsp;]
 
-    I --> K[Store Updated Count]
+    I --> K[&emsp;&emsp;Store Updated Count&emsp;&emsp;]
 `,
 
     workingList: [
@@ -232,17 +232,17 @@ flowchart TD
 
     workingFlowChart: `
 flowchart TD
-    A[Incoming Request] --> B[Get Bucket State]
-    B --> C[Calculate Token Refill]
-    C --> D[Add Available Tokens]
+    A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Get Bucket State&emsp;&emsp;]
+    B --> C[&emsp;&emsp;Calculate Token Refill&emsp;&emsp;]
+    C --> D[&emsp;&emsp;Add Available Tokens&emsp;&emsp;]
 
-    D --> E{Token Available?}
+    D --> E{&emsp;&emsp;Token Available?&emsp;&emsp;}
 
-    E -->|Yes| F[Allow Request]
-    F --> G[Consume Token]
-    G --> H[Update Bucket State]
+    E -->|&emsp;&emsp;Yes&emsp;&emsp;| F[&emsp;&emsp;Allow Request&emsp;&emsp;]
+    F --> G[&emsp;&emsp;Consume Token&emsp;&emsp;]
+    G --> H[&emsp;&emsp;Update Bucket State&emsp;&emsp;]
 
-    E -->|No| I[Reject Request]
+    E -->|&emsp;&emsp;No&emsp;&emsp;| I[&emsp;&emsp;Reject Request&emsp;&emsp;]
 `,
 
     workingList: [
@@ -301,14 +301,14 @@ flowchart TD
 
     workingFlowChart: `
 flowchart TD
-    A[Incoming Request] --> B[Get Bucket State]
-    B --> C{Bucket Full?}
+    A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Get Bucket State&emsp;&emsp;]
+    B --> C{&emsp;&emsp;Bucket Full?&emsp;&emsp;}
 
-    C -->|No| D[Add Request to Bucket]
-    D --> E[Process at Leak Rate]
-    E --> F[Update Bucket State]
+    C -->|&emsp;&emsp;No&emsp;&emsp;| D[&emsp;&emsp;Add Request to Bucket&emsp;&emsp;]
+    D --> E[&emsp;&emsp;Process at Leak Rate&emsp;&emsp;]
+    E --> F[&emsp;&emsp;Update Bucket State&emsp;&emsp;]
 
-    C -->|Yes| G[Reject Request]
+    C -->|&emsp;&emsp;Yes&emsp;&emsp;| G[&emsp;&emsp;Reject Request&emsp;&emsp;]
 `,
 
     workingList: [
@@ -368,17 +368,17 @@ flowchart TD
 
     workingFlowChart: `
 flowchart TD
-    A[Incoming Request] --> B[Identify Client]
-    B --> C[Get Theoretical Arrival Time]
+    A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Identify Client&emsp;&emsp;]
+    B --> C[&emsp;&emsp;Get Theoretical Arrival Time&emsp;&emsp;]
 
-    C --> D[Calculate Expected Arrival]
-    D --> E{Within Allowed Tolerance?}
+    C --> D[&emsp;&emsp;Calculate Expected Arrival&emsp;&emsp;]
+    D --> E{&emsp;&emsp;Within Allowed Tolerance?&emsp;&emsp;}
 
-    E -->|Yes| F[Allow Request]
-    F --> G[Update Theoretical Arrival Time]
+    E -->|&emsp;&emsp;Yes&emsp;&emsp;| F[&emsp;&emsp;Allow Request&emsp;&emsp;]
+    F --> G[&emsp;&emsp;Update Theoretical Arrival Time&emsp;&emsp;]
 
-    E -->|No| H[Reject Request]
-    H --> I[Calculate Retry After]
+    E -->|&emsp;&emsp;No&emsp;&emsp;| H[&emsp;&emsp;Reject Request&emsp;&emsp;]
+    H --> I[&emsp;&emsp;Calculate Retry After&emsp;&emsp;]
 `,
 
     workingList: [

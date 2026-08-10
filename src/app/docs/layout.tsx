@@ -2,6 +2,7 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import React from "react";
 import { docsSidebar } from "../../../utils/Sidebar";
 import DocsHeader from "@/components/DocsHeader/DocsHeader";
+import DocFooter from "@/components/DocFooter/DocFooter";
 
 export default async function DocLayout({ children }: { children: React.ReactNode }) {
 
@@ -17,6 +18,7 @@ export default async function DocLayout({ children }: { children: React.ReactNod
             <div className="p-5">
             { children }
             </div>
+            <DocFooter/>
         </div>
       </div>
     </div>
