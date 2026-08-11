@@ -1,8 +1,8 @@
 export const algorithms = [
   {
-    algorithmName: "Fixed Window",
+    name: "Fixed Window",
 
-    algorithmOverview: [
+    overview: [
       "Fixed Window divides time into fixed intervals and allows a predefined number of requests within each interval. Once the current window expires, the counter resets and a new window begins.",
       "It is one of the simplest rate limiting algorithms and is suitable when you need straightforward and low-overhead request limiting."
     ],
@@ -71,9 +71,9 @@ flowchart TD
   },
 
   {
-    algorithmName: "Sliding Window Log",
+    name: "Sliding Window Log",
 
-    algorithmOverview: [
+    overview: [
       "Sliding Window Log tracks the timestamp of individual requests and evaluates them against a continuously moving time window.",
       "Unlike Fixed Window, the window is not tied to fixed clock intervals. This provides more precise control over request rates."
     ],
@@ -142,9 +142,9 @@ flowchart TD
   },
 
   {
-    algorithmName: "Sliding Window Counter",
+    name: "Sliding Window Counter",
 
-    algorithmOverview: [
+    overview: [
       "Sliding Window Counter provides an approximation of the Sliding Window Log algorithm while using significantly less storage.",
       "Instead of storing every request timestamp, it uses request counts from the current and previous windows to estimate the number of requests within the current sliding window."
     ],
@@ -216,9 +216,9 @@ flowchart TD
   },
 
   {
-    algorithmName: "Token Bucket",
+    name: "Token Bucket",
 
-    algorithmOverview: [
+    overview: [
       "Token Bucket controls request rates using a bucket containing tokens.",
       "Tokens are continuously added to the bucket at a configured refill rate. Each allowed request consumes a token, allowing the algorithm to support controlled bursts while maintaining a long-term request rate."
     ],
@@ -285,9 +285,9 @@ flowchart TD
   },
 
   {
-    algorithmName: "Leaky Bucket",
+    name: "Leaky Bucket",
 
-    algorithmOverview: [
+    overview: [
       "Leaky Bucket controls traffic by processing requests at a controlled rate.",
       "Requests enter a bucket and are removed at a configured rate, smoothing incoming traffic and preventing sudden bursts from overwhelming downstream services."
     ],
@@ -351,9 +351,9 @@ flowchart TD
   },
 
   {
-    algorithmName: "GCRA",
+    name: "GCRA",
 
-    algorithmOverview: [
+    overview: [
       "GCRA (Generic Cell Rate Algorithm) controls request timing using a Theoretical Arrival Time (TAT).",
       "Instead of maintaining a traditional request counter or storing individual request timestamps, GCRA determines whether a request arrives within the allowed timing tolerance.",
       "This provides precise rate control while requiring relatively little state."

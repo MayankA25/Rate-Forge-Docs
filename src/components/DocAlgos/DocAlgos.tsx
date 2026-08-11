@@ -70,7 +70,7 @@ export default function DocAlgos() {
       <div className="flex flex-col justify-center gap-8 mt-8">
 
       {algorithms.map((algorithm, index) => {
-        return <DocAlgoInfo key={index} algorithm={algorithm} />;
+        return <DocAlgoInfo key={index} data={algorithm} />;
       })}
       </div>
     </div>

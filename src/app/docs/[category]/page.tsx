@@ -1,5 +1,6 @@
 import DocAlgos from '@/components/DocAlgos/DocAlgos';
 import DocIntroduction from '@/components/DocIntroduction/DocIntroduction';
+import DocStores from '@/components/DocStores/DocStores';
 import React from 'react'
 
 export default async function Docs({ params }: { params: Promise<{ category: string }> }) {
@@ -12,6 +13,9 @@ export default async function Docs({ params }: { params: Promise<{ category: str
     
     case "algorithms":
       return <DocAlgos/>
+
+    case "stores": 
+      return <DocStores/>
 
     default: 
       return <div>Page Not Found</div>

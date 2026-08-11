@@ -5,9 +5,9 @@ import List from "./List";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import Table from "./Table";
 
-interface Algorithm {
-  algorithmName: string;
-  algorithmOverview: string[];
+interface Data {
+  name: string;
+  overview: string[];
   workingContent: string[];
   workingFlowChart: string;
   workingList: string[];
@@ -20,10 +20,10 @@ interface Algorithm {
   limitations: string[];
 }
 
-export default function DocAlgoInfo({ algorithm }: { algorithm: Algorithm }) {
+export default function DocAlgoInfo({ data }: { data: Data }) {
   const {
-    algorithmName,
-    algorithmOverview,
+    name,
+    overview,
     workingContent,
     workingFlowChart,
     workingList,
@@ -31,18 +31,18 @@ export default function DocAlgoInfo({ algorithm }: { algorithm: Algorithm }) {
     configurationTable,
     advantages,
     limitations,
-  } = algorithm;
+  } = data;
   return (
     <div className="flex flex-col">
       <DocContent
-        title={algorithmName}
+        title={name}
         titleClassName="text-5xl"
         includeHashTag={true}
       >
         <div className="flex flex-col gap-5 px-8">
           <DocContent title="Overview">
             <div className="flex flex-col justify-center gap-3">
-              {algorithmOverview.map((content, index) => {
+              {overview.map((content, index) => {
                 return <p key={index}>{content}</p>;
               })}
             </div>
