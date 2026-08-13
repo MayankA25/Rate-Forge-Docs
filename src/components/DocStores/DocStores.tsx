@@ -1,8 +1,8 @@
 import React from "react";
 import DocContent from "../ui/DocContent";
 import Table from "../ui/Table";
-import DocAlgoInfo from "../ui/DocAlgoInfo";
 import { stores } from "../../../utils/docStores";
+import DocInfoTemplate from "../ui/DocInfoTemplate";
 
 export default function DocStores() {
   const avaiableStoresTable = {
@@ -54,7 +54,7 @@ export default function DocStores() {
 
       <div className="mt-8 flex flex-col justify-center gap-8">
         {stores.map((store, index) => {
-          return <DocAlgoInfo key={index} data={store} />;
+          return <DocInfoTemplate key={index} data={store} />;
         })}
       </div>
     </div>

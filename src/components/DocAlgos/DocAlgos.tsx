@@ -3,7 +3,7 @@ import DocContent from "../ui/DocContent";
 import List from "../ui/List";
 import Table from "../ui/Table";
 import { algorithms } from "../../../utils/docAlgorithms";
-import DocAlgoInfo from "../ui/DocAlgoInfo";
+import DocInfoTemplate from "../ui/DocInfoTemplate";
 
 export default function DocAlgos() {
   const algorithmsOverview = [
@@ -70,7 +70,7 @@ export default function DocAlgos() {
       <div className="flex flex-col justify-center gap-8 mt-8">
 
       {algorithms.map((algorithm, index) => {
-        return <DocAlgoInfo key={index} data={algorithm} />;
+        return <DocInfoTemplate key={index} data={algorithm} />;
       })}
       </div>
     </div>

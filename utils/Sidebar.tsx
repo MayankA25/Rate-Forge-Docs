@@ -36,7 +36,7 @@ export const docsSidebar = [
     slug: "configuration",
     items: [
       { title: "Options", slug: "options" },
-      { title: "Key Generator", slug: "key-generator" },
+      { title: "Unique Identifier", slug: "key-generator" },
       { title: "Headers", slug: "headers" },
       { title: "Custom Responses", slug: "custom-responses" },
     ],

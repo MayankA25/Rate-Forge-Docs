@@ -20,7 +20,7 @@ interface Data {
   limitations: string[];
 }
 
-export default function DocAlgoInfo({ data }: { data: Data }) {
+export default function DocInfoTemplate({ data }: { data: Data }) {
   const {
     name,
     overview,
