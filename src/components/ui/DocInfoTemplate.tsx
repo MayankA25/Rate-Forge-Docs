@@ -16,8 +16,9 @@ interface Data {
     tableHeaders: string[];
     tableBody: string[][];
   };
-  advantages: string[];
-  limitations: string[];
+  advantages?: string[];
+  limitations?: string[];
+  notes?: string[]
 }
 
 export default function DocInfoTemplate({ data }: { data: Data }) {
@@ -31,6 +32,7 @@ export default function DocInfoTemplate({ data }: { data: Data }) {
     configurationTable,
     advantages,
     limitations,
+    notes
   } = data;
   return (
     <div className="flex flex-col">
@@ -66,12 +68,15 @@ export default function DocInfoTemplate({ data }: { data: Data }) {
               tableBody={configurationTable.tableBody}
             />
           </DocContent>
-          <DocContent title="Advantages">
+          {advantages && <DocContent title="Advantages">
             <List listArray={advantages} />
-          </DocContent>
-          <DocContent title="Limitations">
+          </DocContent>}
+          {limitations && <DocContent title="Limitations">
             <List listArray={limitations} />
-          </DocContent>
+          </DocContent>}
+          {notes && <DocContent title="Notes" >
+            <List listArray={notes} listClassName="grid grid-cols-1 gap-2" />
+            </DocContent>}
         </div>
       </DocContent>
     </div>

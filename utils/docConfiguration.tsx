@@ -87,7 +87,7 @@ flowchart TD
 flowchart TD
     A[&emsp;&emsp;Incoming Request&emsp;&emsp;] --> B[&emsp;&emsp;Application&emsp;&emsp;]
     B --> C[&emsp;&emsp;Get Unique Identifier&emsp;&emsp;]
-    C --> D["isRequestAllowed(identifier)"]
+    C --> D["&emsp;&emsp;isRequestAllowed(identifier)&emsp;&emsp;"]
     D --> E[&emsp;&emsp;Rate Limiter&emsp;&emsp;]
     E --> F[&emsp;&emsp;Algorithm&emsp;&emsp;]
     F --> G[&emsp;&emsp;Store&emsp;&emsp;]
