@@ -1,4 +1,5 @@
 import DocAlgos from '@/components/DocAlgos/DocAlgos';
+import DocAPIReference from '@/components/DocAPIReference/DocAPIReference';
 import DocConfiguration from '@/components/DocConfiguration/DocConfiguration';
 import DocGuide from '@/components/DocGuide/DocGuide';
 import DocIntroduction from '@/components/DocIntroduction/DocIntroduction';
@@ -24,6 +25,9 @@ export default async function Docs({ params }: { params: Promise<{ category: str
 
     case "guides":
       return <DocGuide/>
+
+    case "api%20reference":
+      return <DocAPIReference/>
 
     default: 
       return <div>Page Not Found</div>
