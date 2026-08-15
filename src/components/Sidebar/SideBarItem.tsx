@@ -26,7 +26,7 @@ export default function SideBarItem({
 
   const pathname = usePathname();
 
-  const extractedTitle = pathname.split("/")[pathname.split("/").length - 1];
+  const extractedTitle = pathname.split("/")[pathname.split("/").length - 1].split("%20").join(" ");
 
   console.log(extractedTitle);
 
