@@ -30,31 +30,31 @@ export default function DocAPIReferenceInfo({
   return (
     <DocContent title={titleName}>
       <div className="flex flex-col justify-center">
-        {contentBeforeCodes && <div className="flex flex-col justify-center">
+        {contentBeforeCodes && <div className="flex flex-col justify-center gap-2">
           {contentBeforeCodes?.map((content, index) => {
             return <p key={index}>{content}</p>;
           })}
         </div>}
-        {codes && <div className="flex flex-col justify-center my-4">
+        {codes && <div className="flex flex-col justify-center my-4 gap-3">
           { codes?.map((code, index)=>{
             return (
               <CodeBlock key={index} language={code.language} code={code.text} tabs={[]} fileName={titleName} />
             )
           }) }
         </div>}
-        {contentAfterCodes && <div className="flex flex-col justify-center">
+        {contentAfterCodes && <div className="flex flex-col justify-center gap-2">
           {contentAfterCodes?.map((content, index) => {
             return <p key={index}>{content}</p>;
           })}
         </div>}
         {list && <div className="flex flex-col justify-center">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center gap-2">
             { list?.intro.map((con, index)=>{
               return (
                 <p key={index} >{ con }</p>
               )
             }) }
-            <List listArray={list ? list.content : []} />
+            <List listArray={list ? list.content : []} listClassName="grid grid-cols-1 gap-2" />
           </div>
           {  }
         </div>}
