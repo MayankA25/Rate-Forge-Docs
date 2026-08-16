@@ -1,7 +1,4 @@
-export const examples: {
-  title: string;
-  data: ExampleSection[];
-}[] = [
+export const examples = [
   {
     title: "Express",
 
