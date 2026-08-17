@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/Header/Header";
 import { ThemeProvider } from "next-themes";
 import React from "react";
 

@@ -2,7 +2,6 @@ import React from "react";
 
 export default function AlgoCard({
  children,
- border,
  hover
 }: {
   children: React.ReactNode,
