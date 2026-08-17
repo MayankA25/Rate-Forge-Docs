@@ -33,8 +33,11 @@ app.listen(PORT, ()=>{
         <div className="flex items-center">
           <h1 className="text-4xl font-extrabold">Quick Example</h1>
         </div>
-        <div className="my-4 flex flex-col justify-center px-4 gap-4">
-          <h1 className="font-bold text-xl">1. Algorithm: <Badge text="FixedWindow"/>, Store: <Badge text="MemoryStore" /></h1>
+        <div className="my-4 flex flex-col justify-center gap-4 px-4">
+          <h1 className="text-xl font-bold">
+            1. Algorithm: <Badge text="FixedWindow" />, Store:{" "}
+            <Badge text="MemoryStore" />
+          </h1>
           <div className="flex w-full flex-col justify-center">
             <CodeBlock
               language={language}

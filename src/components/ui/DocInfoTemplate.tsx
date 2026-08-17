@@ -18,7 +18,7 @@ interface Data {
   };
   advantages?: string[];
   limitations?: string[];
-  notes?: string[]
+  notes?: string[];
 }
 
 export default function DocInfoTemplate({ data }: { data: Data }) {
@@ -32,15 +32,11 @@ export default function DocInfoTemplate({ data }: { data: Data }) {
     configurationTable,
     advantages,
     limitations,
-    notes
+    notes,
   } = data;
   return (
     <div className="flex flex-col">
-      <DocContent
-        title={name}
-        titleClassName="text-5xl"
-        includeHashTag={true}
-      >
+      <DocContent title={name} titleClassName="text-5xl" includeHashTag={true}>
         <div className="flex flex-col gap-5 px-8">
           <DocContent title="Overview">
             <div className="flex flex-col justify-center gap-3">
@@ -54,7 +50,7 @@ export default function DocInfoTemplate({ data }: { data: Data }) {
               {workingContent.map((content, index) => {
                 return <p key={index}>{content}</p>;
               })}
-              <div className="flex items-center my-5">
+              <div className="my-5 flex items-center">
                 <Mermaid chart={workingFlowChart} />
               </div>
               <List listArray={workingList} />
@@ -68,15 +64,21 @@ export default function DocInfoTemplate({ data }: { data: Data }) {
               tableBody={configurationTable.tableBody}
             />
           </DocContent>
-          {advantages && <DocContent title="Advantages">
-            <List listArray={advantages} />
-          </DocContent>}
-          {limitations && <DocContent title="Limitations">
-            <List listArray={limitations} />
-          </DocContent>}
-          {notes && <DocContent title="Notes" >
-            <List listArray={notes} listClassName="grid grid-cols-1 gap-2" />
-            </DocContent>}
+          {advantages && (
+            <DocContent title="Advantages">
+              <List listArray={advantages} />
+            </DocContent>
+          )}
+          {limitations && (
+            <DocContent title="Limitations">
+              <List listArray={limitations} />
+            </DocContent>
+          )}
+          {notes && (
+            <DocContent title="Notes">
+              <List listArray={notes} listClassName="grid grid-cols-1 gap-2" />
+            </DocContent>
+          )}
         </div>
       </DocContent>
     </div>

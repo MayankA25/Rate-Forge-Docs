@@ -4,13 +4,13 @@ export const algorithms = [
 
     overview: [
       "Fixed Window divides time into fixed intervals and allows a predefined number of requests within each interval. Once the current window expires, the counter resets and a new window begins.",
-      "It is one of the simplest rate limiting algorithms and is suitable when you need straightforward and low-overhead request limiting."
+      "It is one of the simplest rate limiting algorithms and is suitable when you need straightforward and low-overhead request limiting.",
     ],
 
     workingContent: [
       "For example, with a limit of 100 requests per 60 seconds, the algorithm creates fixed 60-second windows.",
       "Within each window, the client's request count is retrieved from the store. If the count is below the configured limit, the request is allowed and the counter is incremented.",
-      "Once the limit is reached, subsequent requests are rejected until the current window expires. When the window expires, the counter is reset for the next window."
+      "Once the limit is reached, subsequent requests are rejected until the current window expires. When the window expires, the counter is reset for the next window.",
     ],
 
     workingFlowChart: `
@@ -37,7 +37,7 @@ flowchart TD
       "Allow the request if the current count is below the configured limit.",
       "Increment the request counter after allowing the request.",
       "Reject the request when the configured limit has been reached.",
-      "Reset the counter when the current window expires."
+      "Reset the counter when the current window expires.",
     ],
 
     configurationCode: `const limiter = new FixedWindow({
@@ -51,8 +51,8 @@ flowchart TD
       tableBody: [
         ["store", "Storage backend used to store the request count."],
         ["limit", "Maximum number of requests allowed within the window."],
-        ["window", "Duration of the fixed window in milliseconds."]
-      ]
+        ["window", "Duration of the fixed window in milliseconds."],
+      ],
     },
 
     advantages: [
@@ -60,14 +60,14 @@ flowchart TD
       "Low memory overhead.",
       "Fast request evaluation.",
       "Easy to configure.",
-      "Suitable for straightforward API rate limiting."
+      "Suitable for straightforward API rate limiting.",
     ],
 
     limitations: [
       "Can suffer from the boundary problem.",
       "Traffic can spike near the boundary between consecutive windows.",
-      "Does not provide precise control over how requests are distributed within a window."
-    ]
+      "Does not provide precise control over how requests are distributed within a window.",
+    ],
   },
 
   {
@@ -75,13 +75,13 @@ flowchart TD
 
     overview: [
       "Sliding Window Log tracks the timestamp of individual requests and evaluates them against a continuously moving time window.",
-      "Unlike Fixed Window, the window is not tied to fixed clock intervals. This provides more precise control over request rates."
+      "Unlike Fixed Window, the window is not tied to fixed clock intervals. This provides more precise control over request rates.",
     ],
 
     workingContent: [
       "For a limit of 100 requests per 60 seconds, the algorithm considers requests that occurred within the previous 60 seconds.",
       "Each request timestamp is stored and timestamps that fall outside the current sliding window are removed before the request count is evaluated.",
-      "If the number of remaining requests is below the configured limit, the request is allowed and its timestamp is added to the log."
+      "If the number of remaining requests is below the configured limit, the request is allowed and its timestamp is added to the log.",
     ],
 
     workingFlowChart: `
@@ -109,7 +109,7 @@ flowchart TD
       "Count the remaining request timestamps.",
       "Allow the request if the count is below the configured limit.",
       "Add the current request timestamp after allowing the request.",
-      "Reject the request when the configured limit has been reached."
+      "Reject the request when the configured limit has been reached.",
     ],
 
     configurationCode: `const limiter = new SlidingWindowLog({
@@ -122,23 +122,26 @@ flowchart TD
       tableHeaders: ["Option", "Description"],
       tableBody: [
         ["store", "Storage backend used to store request timestamps."],
-        ["limit", "Maximum number of requests allowed within the sliding window."],
-        ["window", "Duration of the sliding window in milliseconds."]
-      ]
+        [
+          "limit",
+          "Maximum number of requests allowed within the sliding window.",
+        ],
+        ["window", "Duration of the sliding window in milliseconds."],
+      ],
     },
 
     advantages: [
       "Provides high accuracy.",
       "Eliminates the Fixed Window boundary problem.",
       "Provides precise control over request frequency.",
-      "Naturally adapts to continuously changing traffic."
+      "Naturally adapts to continuously changing traffic.",
     ],
 
     limitations: [
       "Requires storing individual request timestamps.",
       "Uses more memory than counter-based algorithms.",
-      "Storage operations can become more expensive with high request volumes."
-    ]
+      "Storage operations can become more expensive with high request volumes.",
+    ],
   },
 
   {
@@ -146,14 +149,14 @@ flowchart TD
 
     overview: [
       "Sliding Window Counter provides an approximation of the Sliding Window Log algorithm while using significantly less storage.",
-      "Instead of storing every request timestamp, it uses request counts from the current and previous windows to estimate the number of requests within the current sliding window."
+      "Instead of storing every request timestamp, it uses request counts from the current and previous windows to estimate the number of requests within the current sliding window.",
     ],
 
     workingContent: [
       "The algorithm maintains counters for the current and previous windows.",
       "The previous window count is weighted according to how much of that window overlaps with the current sliding window.",
       "The weighted previous count is combined with the current window count to estimate the number of requests within the sliding window.",
-      "The estimated count is then compared against the configured limit."
+      "The estimated count is then compared against the configured limit.",
     ],
 
     workingFlowChart: `
@@ -183,7 +186,7 @@ flowchart TD
       "Calculate the weighted request count using the previous and current windows.",
       "Allow the request if the estimated count is below the configured limit.",
       "Increment the current window counter after allowing the request.",
-      "Reject the request when the estimated count reaches the configured limit."
+      "Reject the request when the estimated count reaches the configured limit.",
     ],
 
     configurationCode: `const limiter = new SlidingWindowCounter({
@@ -196,23 +199,26 @@ flowchart TD
       tableHeaders: ["Option", "Description"],
       tableBody: [
         ["store", "Storage backend used to store window counters."],
-        ["limit", "Maximum number of requests allowed within the sliding window."],
-        ["window", "Duration of the sliding window in milliseconds."]
-      ]
+        [
+          "limit",
+          "Maximum number of requests allowed within the sliding window.",
+        ],
+        ["window", "Duration of the sliding window in milliseconds."],
+      ],
     },
 
     advantages: [
       "Uses less memory than Sliding Window Log.",
       "Provides better traffic control than Fixed Window.",
       "Does not require storing every request timestamp.",
-      "Suitable for applications handling high request volumes."
+      "Suitable for applications handling high request volumes.",
     ],
 
     limitations: [
       "Provides an approximation rather than exact request tracking.",
       "Slightly more complex than Fixed Window.",
-      "The estimated count can differ from the exact Sliding Window Log count."
-    ]
+      "The estimated count can differ from the exact Sliding Window Log count.",
+    ],
   },
 
   {
@@ -220,14 +226,14 @@ flowchart TD
 
     overview: [
       "Token Bucket controls request rates using a bucket containing tokens.",
-      "Tokens are continuously added to the bucket at a configured refill rate. Each allowed request consumes a token, allowing the algorithm to support controlled bursts while maintaining a long-term request rate."
+      "Tokens are continuously added to the bucket at a configured refill rate. Each allowed request consumes a token, allowing the algorithm to support controlled bursts while maintaining a long-term request rate.",
     ],
 
     workingContent: [
       "The bucket has a maximum capacity that determines how many tokens can be stored.",
       "Tokens are replenished according to the configured refill rate based on the time elapsed since the previous request.",
       "When a request arrives, the algorithm calculates the available tokens.",
-      "If at least one token is available, the request is allowed and one token is consumed. If no token is available, the request is rejected."
+      "If at least one token is available, the request is allowed and one token is consumed. If no token is available, the request is rejected.",
     ],
 
     workingFlowChart: `
@@ -252,7 +258,7 @@ flowchart TD
       "Add the refilled tokens without exceeding the bucket capacity.",
       "Check whether at least one token is available.",
       "Allow the request and consume one token when a token is available.",
-      "Reject the request when the bucket does not contain a token."
+      "Reject the request when the bucket does not contain a token.",
     ],
 
     configurationCode: `const limiter = new TokenBucket({
@@ -266,22 +272,22 @@ flowchart TD
       tableBody: [
         ["store", "Storage backend used to store the bucket state."],
         ["capacity", "Maximum number of tokens the bucket can contain."],
-        ["refillRate", "Rate at which tokens are added to the bucket."]
-      ]
+        ["refillRate", "Rate at which tokens are added to the bucket."],
+      ],
     },
 
     advantages: [
       "Supports controlled bursts.",
       "Provides smooth long-term rate control.",
       "Requires relatively little storage.",
-      "Works well for APIs with variable traffic patterns."
+      "Works well for APIs with variable traffic patterns.",
     ],
 
     limitations: [
       "More complex than Fixed Window.",
       "Requires maintaining token state and refill timing.",
-      "Large bursts may not be desirable for applications requiring strictly uniform traffic."
-    ]
+      "Large bursts may not be desirable for applications requiring strictly uniform traffic.",
+    ],
   },
 
   {
@@ -289,14 +295,14 @@ flowchart TD
 
     overview: [
       "Leaky Bucket controls traffic by processing requests at a controlled rate.",
-      "Requests enter a bucket and are removed at a configured rate, smoothing incoming traffic and preventing sudden bursts from overwhelming downstream services."
+      "Requests enter a bucket and are removed at a configured rate, smoothing incoming traffic and preventing sudden bursts from overwhelming downstream services.",
     ],
 
     workingContent: [
       "The bucket has a maximum capacity that determines how many requests can be held.",
       "Incoming requests are added to the bucket while capacity is available.",
       "Requests are processed at the configured leak rate.",
-      "When the bucket reaches its capacity, additional requests are rejected."
+      "When the bucket reaches its capacity, additional requests are rejected.",
     ],
 
     workingFlowChart: `
@@ -318,7 +324,7 @@ flowchart TD
       "Check whether the bucket has available capacity.",
       "Add the request to the bucket when capacity is available.",
       "Process requests at the configured leak rate.",
-      "Reject the request when the bucket reaches its capacity."
+      "Reject the request when the bucket reaches its capacity.",
     ],
 
     configurationCode: `const limiter = new LeakyBucket({
@@ -332,22 +338,22 @@ flowchart TD
       tableBody: [
         ["store", "Storage backend used to store the bucket state."],
         ["capacity", "Maximum number of requests the bucket can hold."],
-        ["leakRate", "Rate at which requests are processed from the bucket."]
-      ]
+        ["leakRate", "Rate at which requests are processed from the bucket."],
+      ],
     },
 
     advantages: [
       "Smooths incoming traffic.",
       "Prevents sudden bursts from reaching downstream services.",
       "Provides predictable traffic flow.",
-      "Useful when consistent processing rates are important."
+      "Useful when consistent processing rates are important.",
     ],
 
     limitations: [
       "Does not naturally accommodate large bursts.",
       "Requires careful configuration of bucket capacity and leak rate.",
-      "Can reject requests when the bucket reaches its capacity."
-    ]
+      "Can reject requests when the bucket reaches its capacity.",
+    ],
   },
 
   {
@@ -356,14 +362,14 @@ flowchart TD
     overview: [
       "GCRA (Generic Cell Rate Algorithm) controls request timing using a Theoretical Arrival Time (TAT).",
       "Instead of maintaining a traditional request counter or storing individual request timestamps, GCRA determines whether a request arrives within the allowed timing tolerance.",
-      "This provides precise rate control while requiring relatively little state."
+      "This provides precise rate control while requiring relatively little state.",
     ],
 
     workingContent: [
       "The algorithm maintains a theoretical arrival time representing when the next request is expected to arrive.",
       "When a request arrives, its current arrival time is compared against the theoretical arrival time and the configured tolerance.",
       "If the request arrives within the allowed tolerance, it is accepted and the theoretical arrival time is updated.",
-      "If the request arrives too early, it is rejected and the retry time can be calculated from the timing difference."
+      "If the request arrives too early, it is rejected and the retry time can be calculated from the timing difference.",
     ],
 
     workingFlowChart: `
@@ -389,7 +395,7 @@ flowchart TD
       "Allow the request when it satisfies the configured rate and tolerance.",
       "Update the theoretical arrival time after an allowed request.",
       "Reject requests that arrive earlier than the allowed tolerance.",
-      "Calculate the retry time when a request is rejected."
+      "Calculate the retry time when a request is rejected.",
     ],
 
     configurationCode: `const limiter = new GCRA({
@@ -401,10 +407,16 @@ flowchart TD
     configurationTable: {
       tableHeaders: ["Option", "Description"],
       tableBody: [
-        ["store", "Storage backend used to store the theoretical arrival time."],
+        [
+          "store",
+          "Storage backend used to store the theoretical arrival time.",
+        ],
         ["limit", "Maximum request rate configured for the limiter."],
-        ["window", "Time period used to calculate the configured request rate."]
-      ]
+        [
+          "window",
+          "Time period used to calculate the configured request rate.",
+        ],
+      ],
     },
 
     advantages: [
@@ -412,13 +424,13 @@ flowchart TD
       "Requires relatively little state.",
       "Suitable for high-throughput systems.",
       "Can support controlled burst tolerance.",
-      "Does not require storing individual request timestamps."
+      "Does not require storing individual request timestamps.",
     ],
 
     limitations: [
       "More difficult to understand than simpler algorithms.",
       "Requires careful configuration of rate and burst behavior.",
-      "The underlying timing model can make debugging less intuitive."
-    ]
-  }
+      "The underlying timing model can make debugging less intuitive.",
+    ],
+  },
 ];

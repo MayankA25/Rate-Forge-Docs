@@ -20,15 +20,14 @@ export default async function CodeBlock({
   fileName?: string;
   tabs: Tab[];
 }) {
-
   const highlightedTabs = await Promise.all(
-    tabs.map(async(tab)=>{
-      return ({
+    tabs.map(async (tab) => {
+      return {
         ...tab,
-        html: await highlightCode(tab.code, tab.language)
-      })
-    })
-  )
+        html: await highlightCode(tab.code, tab.language),
+      };
+    }),
+  );
 
   const html = tabs.length > 0 ? null : await highlightCode(code, language);
 
@@ -36,7 +35,9 @@ export default async function CodeBlock({
 
   return (
     <div className="relative w-full overflow-hidden rounded-lg">
-      {tabs.length > 0 && <CodeTabs tabs={highlightedTabs} headerText={fileName || "Terminal"} />}
+      {tabs.length > 0 && (
+        <CodeTabs tabs={highlightedTabs} headerText={fileName || "Terminal"} />
+      )}
       {fileName && tabs.length == 0 && (
         <CodeHeader headerText={fileName} code={code} />
       )}
@@ -44,7 +45,6 @@ export default async function CodeBlock({
         className="[&_.shiki]:p-7"
         dangerouslySetInnerHTML={{ __html: html! }}
       ></div>
-      
     </div>
   );
 }

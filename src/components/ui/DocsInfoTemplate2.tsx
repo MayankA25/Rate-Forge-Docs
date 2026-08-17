@@ -33,11 +33,11 @@ interface DocAPIReferenceInfoType {
 export default function DocsInfoTemplate2({
   data,
   titleClassName,
-  includeHashTag
+  includeHashTag,
 }: {
   data: DocAPIReferenceInfoType;
   titleClassName?: string;
-  includeHashTag?: boolean
+  includeHashTag?: boolean;
 }) {
   const {
     titleName,
@@ -51,7 +51,11 @@ export default function DocsInfoTemplate2({
     faqs,
   } = data;
   return (
-    <DocContent title={titleName} titleClassName={titleClassName} includeHashTag={includeHashTag}>
+    <DocContent
+      title={titleName}
+      titleClassName={titleClassName}
+      includeHashTag={includeHashTag}
+    >
       <div className="flex flex-col justify-center gap-5">
         {contentBeforeCodes && (
           <div className="flex flex-col justify-center gap-2">
@@ -116,7 +120,10 @@ export default function DocsInfoTemplate2({
           <div className="flex flex-col justify-center">
             {faqs.map((faq, index) => {
               return (
-                <Accordion key={index} data={[{ title: faq.question, content: faq.answer }]} />
+                <Accordion
+                  key={index}
+                  data={[{ title: faq.question, content: faq.answer }]}
+                />
               );
             })}
           </div>

@@ -35,5 +35,10 @@ export default function Mermaid({ chart }: MermaidProps) {
     renderChart();
   }, [chart]);
 
-  return <div ref={ref} className="w-full overflow-x-auto flex items-center justify-center" />;
+  return (
+    <div
+      ref={ref}
+      className="flex w-full items-center justify-center overflow-x-auto"
+    />
+  );
 }

@@ -6,7 +6,7 @@ interface Tab {
   title: string;
   language: string;
   code: string;
-  html: string
+  html: string;
 }
 
 export default function CodeTabs({

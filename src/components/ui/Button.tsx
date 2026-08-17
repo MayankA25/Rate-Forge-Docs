@@ -3,11 +3,11 @@ import React from "react";
 export default function Button({
   children,
   className,
-  hoverClass
+  hoverClass,
 }: {
   children: React.ReactNode;
   className?: string;
-  hoverClass?: string
+  hoverClass?: string;
 }) {
   return (
     <button

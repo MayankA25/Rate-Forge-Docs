@@ -52,10 +52,10 @@ export default function DocGuide() {
         </div>
       </DocContent>
       <div className="mt-8 flex flex-col justify-center gap-8">
-              {guides.map((guide, index) => {
-                return <DocInfoTemplate key={index} data={guide} />;
-              })}
-            </div>
+        {guides.map((guide, index) => {
+          return <DocInfoTemplate key={index} data={guide} />;
+        })}
+      </div>
     </div>
   );
 }

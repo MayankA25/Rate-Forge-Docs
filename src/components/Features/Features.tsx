@@ -11,11 +11,16 @@ export default function Features() {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-            { features.map((feature, index)=>{
-                return (
-                    <FeatureContent key={index} icon={feature.icon} title={feature.title} description={feature.description}/>
-                )
-            }) }
+          {features.map((feature, index) => {
+            return (
+              <FeatureContent
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

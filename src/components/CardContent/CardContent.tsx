@@ -25,10 +25,12 @@ export default function CardContent({
       <div className="flex flex-col justify-center gap-3">
         <div className="flex items-center gap-3">
           <HyperLink text={title} link="" />
-          {(persistent || distributed ) && <div className="flex items-center gap-3 mb-2 mt-1.5">
-            { persistent && <Badge text="Persistent" /> }
-            { distributed && <Badge text="Distributed" /> }
-          </div>}
+          {(persistent || distributed) && (
+            <div className="mt-1.5 mb-2 flex items-center gap-3">
+              {persistent && <Badge text="Persistent" />}
+              {distributed && <Badge text="Distributed" />}
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col gap-3">
@@ -46,10 +48,12 @@ export default function CardContent({
               return <Badge key={index} text={bestFor} />;
             })}
           </div>
-          {memory && <div className="flex items-center gap-2">
-            <span className="font-bold">Memory: </span>
-            <span className="font-bold">{memory}</span>
-          </div>}
+          {memory && (
+            <div className="flex items-center gap-2">
+              <span className="font-bold">Memory: </span>
+              <span className="font-bold">{memory}</span>
+            </div>
+          )}
         </div>
       </div>
     </AlgoCard>

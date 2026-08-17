@@ -67,11 +67,10 @@ export default function DocAlgos() {
           tableBody={algoComparisonTable.tableBody}
         />
       </DocContent>
-      <div className="flex flex-col justify-center gap-8 mt-8">
-
-      {algorithms.map((algorithm, index) => {
-        return <DocInfoTemplate key={index} data={algorithm} />;
-      })}
+      <div className="mt-8 flex flex-col justify-center gap-8">
+        {algorithms.map((algorithm, index) => {
+          return <DocInfoTemplate key={index} data={algorithm} />;
+        })}
       </div>
     </div>
   );

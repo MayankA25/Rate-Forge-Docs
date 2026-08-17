@@ -4,7 +4,7 @@ export const guides = [
 
     overview: [
       "IP-based rate limiting restricts the number of requests that can be made from a specific IP address within a configured period.",
-      "It is useful for protecting public endpoints, authentication routes, and other resources where requests need to be controlled before a user is authenticated."
+      "It is useful for protecting public endpoints, authentication routes, and other resources where requests need to be controlled before a user is authenticated.",
     ],
 
     workingContent: [
@@ -12,7 +12,7 @@ export const guides = [
       "The IP address is passed to isRequestAllowed() as the unique identifier.",
       "Rate Forge uses the identifier to retrieve the corresponding rate limiting state from the configured store.",
       "The selected algorithm evaluates whether the request should be allowed.",
-      "If the request is within the configured limit, the request continues. Otherwise, the application returns a rate-limit response."
+      "If the request is within the configured limit, the request continues. Otherwise, the application returns a rate-limit response.",
     ],
 
     workingFlowChart: `
@@ -35,7 +35,7 @@ flowchart TD
       "Rate Forge retrieves the corresponding rate limiting state.",
       "The configured algorithm evaluates the request.",
       "Continue the request when it is allowed.",
-      "Return a rate-limit response when the limit has been exceeded."
+      "Return a rate-limit response when the limit has been exceeded.",
     ],
 
     configurationCode: `const result = await limiter.isRequestAllowed(
@@ -54,25 +54,19 @@ next();`,
     configurationTable: {
       tableHeaders: ["Value", "Description"],
       tableBody: [
-        [
-          "req.ip",
-          "The client's IP address used as the unique identifier."
-        ],
-        [
-          "allowed",
-          "Determines whether the request can continue."
-        ],
+        ["req.ip", "The client's IP address used as the unique identifier."],
+        ["allowed", "Determines whether the request can continue."],
         [
           "retryAfter",
-          "Indicates how long the client should wait before retrying."
-        ]
-      ]
+          "Indicates how long the client should wait before retrying.",
+        ],
+      ],
     },
 
     notes: [
       "IP-based limiting is most useful when the client is not authenticated.",
-      "Make sure your application correctly handles proxies when determining the client's IP address."
-    ]
+      "Make sure your application correctly handles proxies when determining the client's IP address.",
+    ],
   },
 
   {
@@ -80,14 +74,14 @@ next();`,
 
     overview: [
       "User-based rate limiting applies an independent rate limit to each authenticated user.",
-      "The application's user identifier is passed directly to Rate Forge as the unique identifier."
+      "The application's user identifier is passed directly to Rate Forge as the unique identifier.",
     ],
 
     workingContent: [
       "The application authenticates the incoming request and obtains the user's unique identifier.",
       "The user identifier is passed to isRequestAllowed().",
       "Rate Forge retrieves the rate limiting state associated with that user.",
-      "The configured algorithm evaluates the request and returns the rate limit result."
+      "The configured algorithm evaluates the request and returns the rate limit result.",
     ],
 
     workingFlowChart: `
@@ -109,7 +103,7 @@ flowchart TD
       "Pass the identifier to isRequestAllowed().",
       "Evaluate the request using the configured algorithm.",
       "Continue the request when allowed.",
-      "Reject the request when the user's limit is exceeded."
+      "Reject the request when the user's limit is exceeded.",
     ],
 
     configurationCode: `const result = await limiter.isRequestAllowed(
@@ -128,25 +122,16 @@ next();`,
     configurationTable: {
       tableHeaders: ["Value", "Description"],
       tableBody: [
-        [
-          "req.userId",
-          "Unique identifier of the authenticated user."
-        ],
-        [
-          "allowed",
-          "Indicates whether the request is allowed."
-        ],
-        [
-          "retryAfter",
-          "Indicates when the user can retry."
-        ]
-      ]
+        ["req.userId", "Unique identifier of the authenticated user."],
+        ["allowed", "Indicates whether the request is allowed."],
+        ["retryAfter", "Indicates when the user can retry."],
+      ],
     },
 
     notes: [
       "Use a stable and unique identifier for each user.",
-      "User-based limiting is generally more precise than IP-based limiting for authenticated APIs."
-    ]
+      "User-based limiting is generally more precise than IP-based limiting for authenticated APIs.",
+    ],
   },
 
   {
@@ -154,13 +139,13 @@ next();`,
 
     overview: [
       "Route-specific limiting allows different API endpoints to use different rate limiting configurations.",
-      "This is useful when certain routes are more sensitive, expensive, or resource-intensive than others."
+      "This is useful when certain routes are more sensitive, expensive, or resource-intensive than others.",
     ],
 
     workingContent: [
       "Create separate rate limiters for routes that require different limits.",
       "Each limiter can use its own algorithm, store, and configuration.",
-      "Apply the appropriate limiter when handling the corresponding route."
+      "Apply the appropriate limiter when handling the corresponding route.",
     ],
 
     workingFlowChart: `
@@ -187,7 +172,7 @@ flowchart TD
       "Provide the appropriate unique identifier.",
       "Evaluate the request.",
       "Continue the request when allowed.",
-      "Reject the request when the route-specific limit is exceeded."
+      "Reject the request when the route-specific limit is exceeded.",
     ],
 
     configurationCode: `const authLimiter = new FixedWindow({
@@ -207,14 +192,14 @@ const apiLimiter = new FixedWindow({
       tableBody: [
         ["Authentication", "5 requests/minute", "IP address"],
         ["Authenticated API", "100 requests/minute", "User ID"],
-        ["Public API", "200 requests/minute", "IP address"]
-      ]
+        ["Public API", "200 requests/minute", "IP address"],
+      ],
     },
 
     notes: [
       "Use stricter limits for sensitive endpoints such as login, password reset, and OTP verification.",
-      "Different routes can use different algorithms when required."
-    ]
+      "Different routes can use different algorithms when required.",
+    ],
   },
 
   {
@@ -222,14 +207,14 @@ const apiLimiter = new FixedWindow({
 
     overview: [
       "Dynamic rate limiting allows applications to apply different limits based on runtime conditions.",
-      "This is particularly useful for applications with different subscription plans, user roles, organizations, or access levels."
+      "This is particularly useful for applications with different subscription plans, user roles, organizations, or access levels.",
     ],
 
     workingContent: [
       "Determine the appropriate rate limit based on the current user's plan or application context.",
       "Create or select the limiter corresponding to the required limit.",
       "Pass the user's unique identifier to isRequestAllowed().",
-      "Rate Forge evaluates the request using the selected configuration."
+      "Rate Forge evaluates the request using the selected configuration.",
     ],
 
     workingFlowChart: `
@@ -257,7 +242,7 @@ flowchart TD
       "Select the appropriate rate limit.",
       "Evaluate the request using the selected limiter.",
       "Continue the request when allowed.",
-      "Reject the request when the applicable limit is exceeded."
+      "Reject the request when the applicable limit is exceeded.",
     ],
 
     configurationCode: `const limits = {
@@ -283,14 +268,14 @@ const result = await limiter.isRequestAllowed(
       tableBody: [
         ["Free", "20 requests/minute", "User ID"],
         ["Pro", "100 requests/minute", "User ID"],
-        ["Enterprise", "500 requests/minute", "User ID"]
-      ]
+        ["Enterprise", "500 requests/minute", "User ID"],
+      ],
     },
 
     notes: [
       "Dynamic limits are useful for SaaS applications with multiple subscription tiers.",
-      "Keep the logic that determines the limit separate from the rate limiter itself."
-    ]
+      "Keep the logic that determines the limit separate from the rate limiter itself.",
+    ],
   },
 
   {
@@ -298,14 +283,14 @@ const result = await limiter.isRequestAllowed(
 
     overview: [
       "Distributed rate limiting is required when an application runs across multiple server instances, containers, or services.",
-      "A shared storage backend allows all application instances to access the same rate limiting state."
+      "A shared storage backend allows all application instances to access the same rate limiting state.",
     ],
 
     workingContent: [
       "Multiple application instances receive requests through a load balancer.",
       "Each instance uses the same Rate Forge configuration and a shared storage backend.",
       "The shared store maintains the rate limiting state for all instances.",
-      "This prevents each application instance from maintaining an independent rate limit."
+      "This prevents each application instance from maintaining an independent rate limit.",
     ],
 
     workingFlowChart: `
@@ -332,7 +317,7 @@ flowchart TD
       "Configure Rate Forge on every instance.",
       "Use a shared storage backend such as Redis, MongoDB, or PostgreSQL.",
       "Use a consistent unique identifier across all instances.",
-      "Allow each instance to read and update the shared rate limiting state."
+      "Allow each instance to read and update the shared rate limiting state.",
     ],
 
     configurationCode: `const store = new RedisStore(redis);
@@ -352,26 +337,23 @@ const result = await limiter.isRequestAllowed(
       tableBody: [
         [
           "Application Instances",
-          "Handle incoming requests across multiple servers or containers."
+          "Handle incoming requests across multiple servers or containers.",
         ],
-        [
-          "Rate Forge",
-          "Evaluates requests using the configured algorithm."
-        ],
+        ["Rate Forge", "Evaluates requests using the configured algorithm."],
         [
           "Shared Store",
-          "Maintains rate limiting state shared across instances."
+          "Maintains rate limiting state shared across instances.",
         ],
         [
           "Unique Identifier",
-          "Identifies the client consistently across instances."
-        ]
-      ]
+          "Identifies the client consistently across instances.",
+        ],
+      ],
     },
 
     notes: [
       "Use a distributed store when running multiple application instances.",
-      "All instances must use a consistent identifier and shared rate limiting state."
-    ]
-  }
+      "All instances must use a consistent identifier and shared rate limiting state.",
+    ],
+  },
 ];

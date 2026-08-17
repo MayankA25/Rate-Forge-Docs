@@ -8,11 +8,7 @@ export const stores = [
     description:
       "The Memory Store keeps all rate limit data inside your application's memory, making it the fastest storage option with zero external dependencies. It's perfect for local development, testing, and small deployments running on a single server. Since the data lives only in memory, it is lost whenever the application restarts and cannot be shared across multiple instances.",
 
-    bestFor: [
-      "Development",
-      "Testing",
-      "Single-server deployments",
-    ],
+    bestFor: ["Development", "Testing", "Single-server deployments"],
 
     complexity: {
       time: "O(1)",
@@ -32,11 +28,7 @@ export const stores = [
     description:
       "The Redis Store stores rate limit data in Redis, allowing multiple application instances to share the same state. It supports automatic expiration, atomic operations, and excellent performance, making it the recommended choice for production APIs, microservices, and horizontally scaled deployments.",
 
-    bestFor: [
-      "Production APIs",
-      "Microservices",
-      "Distributed systems",
-    ],
+    bestFor: ["Production APIs", "Microservices", "Distributed systems"],
 
     complexity: {
       time: "O(1)",

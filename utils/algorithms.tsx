@@ -2,7 +2,8 @@ export const algorithms = [
   {
     id: "fixed-window",
     title: "Fixed Window",
-    shortDescription: "Simple and efficient request limiting within a fixed time interval.",
+    shortDescription:
+      "Simple and efficient request limiting within a fixed time interval.",
     description:
       "The Fixed Window algorithm divides time into fixed intervals and allows a predefined number of requests during each interval. Once the limit is reached, all subsequent requests are rejected until the next window begins. It's fast, lightweight, and ideal for applications where occasional traffic spikes at window boundaries are acceptable.",
     bestFor: [
@@ -28,7 +29,8 @@ export const algorithms = [
   {
     id: "sliding-window-log",
     title: "Sliding Window Log",
-    shortDescription: "Provides precise rate limiting by tracking every request timestamp.",
+    shortDescription:
+      "Provides precise rate limiting by tracking every request timestamp.",
     description:
       "Sliding Window Log stores the timestamp of every request and removes entries that fall outside the configured window. Since each request is evaluated against actual request history, it provides highly accurate rate limiting at the cost of additional memory usage.",
     bestFor: [
@@ -53,7 +55,8 @@ export const algorithms = [
   {
     id: "sliding-window-counter",
     title: "Sliding Window Counter",
-    shortDescription: "Balances accuracy and performance using weighted request counting.",
+    shortDescription:
+      "Balances accuracy and performance using weighted request counting.",
     description:
       "Sliding Window Counter combines the current and previous fixed windows using weighted calculations to approximate a true sliding window. It delivers near-accurate rate limiting while consuming significantly less memory than Sliding Window Log.",
     bestFor: [
@@ -66,9 +69,7 @@ export const algorithms = [
       "More accurate than Fixed Window",
       "High performance",
     ],
-    disadvantages: [
-      "Slightly less accurate than Sliding Window Log",
-    ],
+    disadvantages: ["Slightly less accurate than Sliding Window Log"],
     complexity: "O(1)",
     storage: "Current & Previous Window Counters",
     icon: "BarChart3",
@@ -76,7 +77,8 @@ export const algorithms = [
   {
     id: "token-bucket",
     title: "Token Bucket",
-    shortDescription: "Allows controlled bursts while maintaining a steady request rate.",
+    shortDescription:
+      "Allows controlled bursts while maintaining a steady request rate.",
     description:
       "Token Bucket continuously refills tokens at a configured rate. Each incoming request consumes one token. Requests are accepted while tokens are available and rejected once the bucket is empty until more tokens are replenished.",
     bestFor: [
@@ -90,9 +92,7 @@ export const algorithms = [
       "Smooth request flow",
       "Highly scalable",
     ],
-    disadvantages: [
-      "Requires token refill calculations",
-    ],
+    disadvantages: ["Requires token refill calculations"],
     complexity: "O(1)",
     storage: "Token Count + Last Refill Time",
     icon: "Droplets",
@@ -100,7 +100,8 @@ export const algorithms = [
   {
     id: "leaky-bucket",
     title: "Leaky Bucket",
-    shortDescription: "Processes requests at a constant rate for smooth traffic flow.",
+    shortDescription:
+      "Processes requests at a constant rate for smooth traffic flow.",
     description:
       "Leaky Bucket treats incoming requests as water entering a bucket with a small leak. Requests enter the bucket quickly but leave at a constant rate, smoothing sudden traffic spikes and preventing downstream overload.",
     bestFor: [
@@ -125,7 +126,8 @@ export const algorithms = [
   {
     id: "gcra",
     title: "GCRA",
-    shortDescription: "Production-grade algorithm used by telecom systems and modern API gateways.",
+    shortDescription:
+      "Production-grade algorithm used by telecom systems and modern API gateways.",
     description:
       "The Generic Cell Rate Algorithm (GCRA) tracks the theoretical arrival time of requests instead of storing counters or timestamps. It provides extremely accurate rate limiting while remaining memory efficient, making it a popular choice for high-performance distributed systems.",
     bestFor: [

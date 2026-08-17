@@ -1,22 +1,25 @@
-import React from 'react'
-import { algorithms } from '../../../utils/algorithms'
-import CardContent from '../CardContent/CardContent'
+import React from "react";
+import { algorithms } from "../../../utils/algorithms";
+import CardContent from "../CardContent/CardContent";
 
 export default function Algorithms() {
-
-    
-
   return (
-    <div className='flex flex-col justify-center gap-5'>
-      <h1 className='font-extrabold text-3xl'>Algorithms</h1>
+    <div className="flex flex-col justify-center gap-5">
+      <h1 className="text-3xl font-extrabold">Algorithms</h1>
 
       <div className="grid grid-cols-2 gap-3">
-        { algorithms.map((algorithm)=>{
+        {algorithms.map((algorithm) => {
           return (
-            <CardContent key={algorithm.id} title={algorithm.title} content={algorithm.shortDescription} timeComplexity={algorithm.complexity} bestForContent={algorithm.bestFor}/>
-          )
-        }) }
+            <CardContent
+              key={algorithm.id}
+              title={algorithm.title}
+              content={algorithm.shortDescription}
+              timeComplexity={algorithm.complexity}
+              bestForContent={algorithm.bestFor}
+            />
+          );
+        })}
       </div>
     </div>
-  )
+  );
 }

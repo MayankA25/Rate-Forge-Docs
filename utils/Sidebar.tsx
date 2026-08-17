@@ -89,7 +89,10 @@ export const docsSidebar = [
     title: "FAQs",
     slug: "faqs",
     items: [
-      { title: "Frequently Asked Questions", slug: "frequently-asked-questions" }
+      {
+        title: "Frequently Asked Questions",
+        slug: "frequently-asked-questions",
+      },
     ],
   },
 ];

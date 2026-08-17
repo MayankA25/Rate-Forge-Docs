@@ -23,20 +23,22 @@ export default function DocExamples() {
           </p>
         </div>
       </DocContent>
-      <div className="flex flex-col justify-center my-5">
-
-      { examples.map((example, index)=>{
+      <div className="my-5 flex flex-col justify-center">
+        {examples.map((example, index) => {
           return (
-              <DocContent key={index} title={example.title} titleClassName="text-5xl mt-5" includeHashTag={true} >
-                { example.data.map((dat, index2)=>{
-                    return (
-                        <DocsInfoTemplate2 key={index2} data={dat} />
-                    )
-                }) }
+            <DocContent
+              key={index}
+              title={example.title}
+              titleClassName="text-5xl mt-5"
+              includeHashTag={true}
+            >
+              {example.data.map((dat, index2) => {
+                return <DocsInfoTemplate2 key={index2} data={dat} />;
+              })}
             </DocContent>
-        )
-    }) }
-    </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

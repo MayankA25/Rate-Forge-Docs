@@ -26,7 +26,10 @@ export default function SideBarItem({
 
   const pathname = usePathname();
 
-  const extractedTitle = pathname.split("/")[pathname.split("/").length - 1].split("%20").join(" ");
+  const extractedTitle = pathname
+    .split("/")
+    [pathname.split("/").length - 1].split("%20")
+    .join(" ");
 
   console.log(extractedTitle);
 
@@ -44,20 +47,26 @@ export default function SideBarItem({
         </Link>
         {item.items &&
           (block ? (
-            <span className="hover:bg-neutral-800 rounded-full p-1 transition-all duration-200" onClick={()=>{
-                setBlock(false)
-            }}>
+            <span
+              className="rounded-full p-1 transition-all duration-200 hover:bg-neutral-800"
+              onClick={() => {
+                setBlock(false);
+              }}
+            >
               <ChevronDown />
             </span>
           ) : (
-            <span className="hover:bg-neutral-800 rounded-full p-1 transition-all duration-200" onClick={()=>{
+            <span
+              className="rounded-full p-1 transition-all duration-200 hover:bg-neutral-800"
+              onClick={() => {
                 setBlock(true);
-            }}>
+              }}
+            >
               <ChevronRight />
             </span>
           ))}
       </div>
-      {item.items  && (
+      {item.items && (
         <Sidebar items={item.items} displayBlock={block} isChildren={true} />
       )}
     </li>

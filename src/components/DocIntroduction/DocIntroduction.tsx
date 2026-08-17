@@ -59,15 +59,15 @@ export default function DocIntroduction() {
   const requirementsTable = {
     tableHeaders: ["Requirement", "Support"],
     tableBody: [
-      [ "Node.js", "Required" ],
-      [ "TyepScript", "Fully Supported" ],
-      [ "JavaScript", "Fully Supported" ],
-      [ "npm", "Supported" ],
-      [ "pnpm", "Supported" ],
-      [ "yarn", "Supported" ],
-      [ "bun", "Supported" ],
-    ]
-  }
+      ["Node.js", "Required"],
+      ["TyepScript", "Fully Supported"],
+      ["JavaScript", "Fully Supported"],
+      ["npm", "Supported"],
+      ["pnpm", "Supported"],
+      ["yarn", "Supported"],
+      ["bun", "Supported"],
+    ],
+  };
 
   const quickStartCodes = [
     {
@@ -238,7 +238,10 @@ app.listen(5000);`,
           </DocContent>
 
           <DocContent title="Requirements" includeHashTag={false}>
-            <Table tableHeaders={requirementsTable.tableHeaders} tableBody={requirementsTable.tableBody} />
+            <Table
+              tableHeaders={requirementsTable.tableHeaders}
+              tableBody={requirementsTable.tableBody}
+            />
           </DocContent>
         </div>
       </DocContent>
