@@ -2,7 +2,7 @@ import React from "react";
 import DocContent from "../ui/DocContent";
 import List from "../ui/List";
 import { algorithmsAPI, middlewareAPI, rateLimiterAPI, storesAPI, typesAPI } from "../../../utils/docAPIReference";
-import DocAPIReferenceInfo from "../ui/DocAPIReferenceInfo";
+import DocsInfoTemplate2 from "../ui/DocsInfoTemplate2";
 
 export default function DocAPIReference() {
 
@@ -46,35 +46,35 @@ export default function DocAPIReference() {
         <DocContent title="Rate Limiter API" titleClassName="text-5xl" includeHashTag={true}>
           { rateLimiterAPI.map((content, index)=>{
             return (
-              <DocAPIReferenceInfo key={index} data={content} />
+              <DocsInfoTemplate2 key={index} data={content} />
             )
           }) }
         </DocContent>
         <DocContent title="Algorithms API" titleClassName="text-5xl" includeHashTag={true}>
           { algorithmsAPI.map((content, index)=>{
             return (
-              <DocAPIReferenceInfo key={index} data={content} />
+              <DocsInfoTemplate2 key={index} data={content} />
             )
           }) }
         </DocContent>
         <DocContent title="Stores API" titleClassName="text-5xl" includeHashTag={true}>
           { storesAPI.map((content, index)=>{
             return (
-              <DocAPIReferenceInfo key={index} data={content} />
+              <DocsInfoTemplate2 key={index} data={content} />
             )
           }) }
         </DocContent>
         <DocContent title="Middleware" titleClassName="text-5xl" includeHashTag={true}>
           { middlewareAPI.map((content, index)=>{
             return (
-              <DocAPIReferenceInfo key={index} data={content} />
+              <DocsInfoTemplate2 key={index} data={content} />
             )
           }) }
         </DocContent>
         <DocContent title="Types" titleClassName="text-5xl" includeHashTag={true}>
           { typesAPI.map((content, index)=>{
             return (
-              <DocAPIReferenceInfo key={index} data={content} />
+              <DocsInfoTemplate2 key={index} data={content} />
             )
           }) }
         </DocContent>

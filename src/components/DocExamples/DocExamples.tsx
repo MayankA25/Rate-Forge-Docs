@@ -1,7 +1,7 @@
 import React from "react";
 import DocContent from "../ui/DocContent";
 import { examples } from "../../../utils/docExamples";
-import DocAPIReferenceInfo from "../ui/DocAPIReferenceInfo";
+import DocsInfoTemplate2 from "../ui/DocsInfoTemplate2";
 
 export default function DocExamples() {
   return (
@@ -30,7 +30,7 @@ export default function DocExamples() {
               <DocContent key={index} title={example.title} titleClassName="text-5xl mt-5" includeHashTag={true} >
                 { example.data.map((dat, index2)=>{
                     return (
-                        <DocAPIReferenceInfo key={index2} data={dat} />
+                        <DocsInfoTemplate2 key={index2} data={dat} />
                     )
                 }) }
             </DocContent>

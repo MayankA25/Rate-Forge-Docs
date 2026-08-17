@@ -1,3 +1,4 @@
+import DocAdvanced from '@/components/DocAdvanced/DocAdvanced';
 import DocAlgos from '@/components/DocAlgos/DocAlgos';
 import DocAPIReference from '@/components/DocAPIReference/DocAPIReference';
 import DocConfiguration from '@/components/DocConfiguration/DocConfiguration';
@@ -32,6 +33,9 @@ export default async function Docs({ params }: { params: Promise<{ category: str
 
     case "examples":
       return <DocExamples/>
+
+    case "advanced":
+      return <DocAdvanced/>
 
     default: 
       return <div>Page Not Found</div>
