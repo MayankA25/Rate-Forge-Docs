@@ -6,6 +6,7 @@ import DocExamples from '@/components/DocExamples/DocExamples';
 import DocGuide from '@/components/DocGuide/DocGuide';
 import DocIntroduction from '@/components/DocIntroduction/DocIntroduction';
 import DocStores from '@/components/DocStores/DocStores';
+import FAQs from '@/components/FAQs/FAQs';
 import React from 'react'
 
 export default async function Docs({ params }: { params: Promise<{ category: string }> }) {
@@ -36,6 +37,9 @@ export default async function Docs({ params }: { params: Promise<{ category: str
 
     case "advanced":
       return <DocAdvanced/>
+
+    case "faqs":
+      return <FAQs/>
 
     default: 
       return <div>Page Not Found</div>

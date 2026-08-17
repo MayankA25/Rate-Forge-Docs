@@ -57,7 +57,7 @@ export default function SideBarItem({
             </span>
           ))}
       </div>
-      {item.items && (
+      {item.items  && (
         <Sidebar items={item.items} displayBlock={block} isChildren={true} />
       )}
     </li>

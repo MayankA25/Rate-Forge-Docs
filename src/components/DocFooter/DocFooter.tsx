@@ -17,7 +17,7 @@ export default function DocFooter() {
     "API Reference": "/docs/api-reference",
     Examples: "/docs/examples",
     Advanced: "/docs/advanced",
-    Contributing: "/docs/contributing",
+    FAQs: "/docs/faqs",
   };
 
   const pathname = usePathname();

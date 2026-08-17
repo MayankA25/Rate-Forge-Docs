@@ -83,17 +83,13 @@ export const docsSidebar = [
       { title: "How Rate Forge Works", slug: "how-rate-forge-works" },
       { title: "Performance", slug: "performance" },
       { title: "Concurrency & Locking", slug: "concurrency-and-locking" },
-      { title: "FAQ", slug: "faq" },
     ],
   },
   {
-    title: "Contributing",
-    slug: "contributing",
+    title: "FAQs",
+    slug: "faqs",
     items: [
-      { title: "Contributing Guide", slug: "contributing-guide" },
-      { title: "Architecture", slug: "architecture" },
-      { title: "Changelog", slug: "changelog" },
-      { title: "License", slug: "license" },
+      { title: "Frequently Asked Questions", slug: "frequently-asked-questions" }
     ],
   },
 ];

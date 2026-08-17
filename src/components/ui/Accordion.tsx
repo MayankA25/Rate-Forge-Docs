@@ -8,11 +8,7 @@ interface AccordionData {
   content: string;
 }
 
-export default function Accordion({
-  data,
-}: {
-  data: AccordionData[];
-}) {
+export default function Accordion({ data }: { data: AccordionData[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
@@ -32,7 +28,7 @@ export default function Accordion({
             <button
               type="button"
               onClick={() => toggleAccordion(index)}
-              className="flex w-full items-center justify-between gap-5 py-5 text-left"
+              className="flex w-full cursor-pointer items-center justify-between gap-5 py-5 text-left"
             >
               <span className="text-base font-semibold text-neutral-200">
                 {item.title}
@@ -51,7 +47,7 @@ export default function Accordion({
               }`}
             >
               <div className="overflow-hidden">
-                <p className="pb-5 pr-8 text-sm leading-7 text-neutral-400">
+                <p className="pr-8 pb-5 text-sm leading-7 text-neutral-400">
                   {item.content}
                 </p>
               </div>
