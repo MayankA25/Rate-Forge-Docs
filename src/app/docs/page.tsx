@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 export default function Doc() {
-
   redirect("/docs/introduction");
 
   return (
