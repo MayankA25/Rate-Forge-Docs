@@ -7,6 +7,7 @@ import DocGuide from "@/components/DocGuide/DocGuide";
 import DocIntroduction from "@/components/DocIntroduction/DocIntroduction";
 import DocStores from "@/components/DocStores/DocStores";
 import FAQs from "@/components/FAQs/FAQs";
+import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function Docs({
@@ -45,6 +46,6 @@ export default async function Docs({
       return <FAQs />;
 
     default:
-      return <div>Page Not Found</div>;
+      return notFound();
   }
 }

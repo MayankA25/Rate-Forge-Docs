@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import { ChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Introduction() {
   return (
@@ -24,25 +25,29 @@ export default function Introduction() {
           </p>
         </div>
         <div className="flex items-center justify-center gap-4">
-          <Button>
-            <span className="flex items-center gap-2">
-              <span>How to use?</span>
-              <i>
-                <ChevronRight />
-              </i>
-            </span>
-          </Button>
-          <Button
-            className="bg-neutral-800 text-neutral-200"
-            hoverClass="hover:bg-neutral-900"
-          >
-            <span className="flex items-center gap-2.5">
-              <i>
-                <FaGithub className="size-5" />
-              </i>
-              <span>GitHub</span>
-            </span>
-          </Button>
+          <Link href={"/docs/introduction"}>
+            <Button>
+              <span className="flex items-center gap-2">
+                <span>How to use?</span>
+                <i>
+                  <ChevronRight />
+                </i>
+              </span>
+            </Button>
+          </Link>
+          <a target="_blank" href={"https://github.com/MayankA25/rate-forge"}>
+            <Button
+              className="bg-neutral-800 text-neutral-200"
+              hoverClass="hover:bg-neutral-900"
+            >
+              <span className="flex items-center gap-2.5">
+                <i>
+                  <FaGithub className="size-5" />
+                </i>
+                <span>GitHub</span>
+              </span>
+            </Button>
+          </a>
         </div>
       </div>
     </div>
